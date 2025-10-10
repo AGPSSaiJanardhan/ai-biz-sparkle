@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { Link, useLocation } from "react-router-dom";
 import { 
   BarChart3, 
   Users, 
@@ -18,16 +18,18 @@ interface SidebarProps {
 }
 
 const menuItems = [
-  { icon: BarChart3, label: "Dashboard", active: true },
-  { icon: Users, label: "Employees" },
-  { icon: FolderKanban, label: "Projects" },
-  { icon: DollarSign, label: "Finance" },
-  { icon: Shield, label: "Security" },
-  { icon: FileText, label: "Reports" },
-  { icon: Settings, label: "Settings" },
+  { icon: BarChart3, label: "Dashboard", path: "/" },
+  { icon: Users, label: "Employees", path: "/employees" },
+  { icon: FolderKanban, label: "Projects", path: "/projects" },
+  { icon: DollarSign, label: "Finance", path: "/finance" },
+  { icon: Shield, label: "Security", path: "/security" },
+  { icon: FileText, label: "Reports", path: "/reports" },
+  { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
 export const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
+  const location = useLocation();
+
   return (
     <div
       className={cn(
@@ -64,12 +66,14 @@ export const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
         <ul className="space-y-2">
           {menuItems.map((item, index) => {
             const Icon = item.icon;
+            const isActive = location.pathname === item.path;
             return (
               <li key={index}>
-                <button
+                <Link
+                  to={item.path}
                   className={cn(
                     "w-full flex items-center space-x-3 px-3 py-3 rounded-lg transition-all duration-200",
-                    item.active
+                    isActive
                       ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-lg"
                       : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                   )}
@@ -78,7 +82,7 @@ export const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
                   {!collapsed && (
                     <span className="font-medium truncate">{item.label}</span>
                   )}
-                </button>
+                </Link>
               </li>
             );
           })}
