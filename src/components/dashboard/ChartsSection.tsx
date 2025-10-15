@@ -19,6 +19,10 @@ const ChartCanvas = ({ title, type, className }: ChartCanvasProps) => {
 
     // Set canvas size
     const rect = canvas.getBoundingClientRect();
+    
+    // Ensure canvas has valid dimensions
+    if (rect.width < 50 || rect.height < 50) return;
+    
     canvas.width = rect.width * window.devicePixelRatio;
     canvas.height = rect.height * window.devicePixelRatio;
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
@@ -75,7 +79,7 @@ const ChartCanvas = ({ title, type, className }: ChartCanvasProps) => {
     ];
     const centerX = width / 2;
     const centerY = height / 2;
-    const radius = Math.min(width, height) / 2 - 20;
+    const radius = Math.max(Math.min(width, height) / 2 - 20, 10);
     const total = data.reduce((sum, value) => sum + value, 0);
 
     let currentAngle = -Math.PI / 2;
