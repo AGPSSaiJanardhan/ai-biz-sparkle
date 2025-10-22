@@ -12,11 +12,6 @@ import {
   ChevronLeft
 } from "lucide-react";
 
-interface SidebarProps {
-  collapsed: boolean;
-  onToggle: () => void;
-}
-
 const menuItems = [
   { icon: BarChart3, label: "Dashboard", path: "/" },
   { icon: Users, label: "Employees", path: "/employees" },
@@ -27,7 +22,7 @@ const menuItems = [
   { icon: Settings, label: "Settings", path: "/settings" },
 ];
 
-export const Sidebar = ({ collapsed, onToggle }: SidebarProps) => {
+export const Sidebar = ({ collapsed, onToggle }) => {
   const location = useLocation();
 
   return (

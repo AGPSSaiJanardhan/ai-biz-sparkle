@@ -7,37 +7,37 @@ const insights = [
     icon: TrendingUp,
     title: "Revenue Forecast",
     message: "Revenue forecast for next month: +12% based on current trends and seasonal patterns.",
-    type: "positive" as const,
+    type: "positive",
   },
   {
     icon: AlertCircle,
     title: "Project Risk Analysis",
     message: "Project X has a 78% chance of delay due to resource constraints and dependency issues.",
-    type: "warning" as const,
+    type: "warning",
   },
   {
     icon: Target,
     title: "Performance Optimization",
     message: "Employee productivity increased by 15% after implementing AI-powered task allocation.",
-    type: "info" as const,
+    type: "info",
   },
   {
     icon: Brain,
     title: "Predictive Analytics",
     message: "Market analysis suggests launching Product Y in Q2 for optimal customer adoption.",
-    type: "positive" as const,
+    type: "positive",
   },
   {
     icon: AlertCircle,
     title: "Security Alert",
     message: "Detected unusual login patterns. Recommend enabling additional 2FA for 12 accounts.",
-    type: "warning" as const,
+    type: "warning",
   },
   {
     icon: TrendingUp,
     title: "Growth Opportunity",
     message: "Customer retention can improve by 23% with personalized engagement strategies.",
-    type: "positive" as const,
+    type: "positive",
   },
 ];
 

@@ -21,7 +21,7 @@ const securityMetrics = [
   { label: "Secure Connections", value: "99.8%", icon: Lock, color: "success" },
 ];
 
-const getSeverityColor = (type: string) => {
+const getSeverityColor = (type) => {
   switch (type) {
     case "Critical": return "destructive";
     case "Warning": return "secondary";
@@ -30,7 +30,7 @@ const getSeverityColor = (type: string) => {
   }
 };
 
-const getStatusColor = (status: string) => {
+const getStatusColor = (status) => {
   switch (status) {
     case "Active": return "destructive";
     case "Reviewing": return "secondary";

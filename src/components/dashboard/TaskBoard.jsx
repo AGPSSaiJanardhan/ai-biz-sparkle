@@ -2,22 +2,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { Plus, MoreVertical } from "lucide-react";
 
-interface Task {
-  id: string;
-  title: string;
-  description: string;
-  priority: "low" | "medium" | "high";
-  assignee: string;
-}
-
-interface Column {
-  id: string;
-  title: string;
-  tasks: Task[];
-  color: string;
-}
-
-const initialData: Column[] = [
+const initialData = [
   {
     id: "todo",
     title: "To Do",
@@ -77,20 +62,20 @@ const initialData: Column[] = [
 ];
 
 export const TaskBoard = () => {
-  const [columns, setColumns] = useState<Column[]>(initialData);
-  const [draggedTask, setDraggedTask] = useState<Task | null>(null);
-  const [draggedFrom, setDraggedFrom] = useState<string | null>(null);
+  const [columns, setColumns] = useState(initialData);
+  const [draggedTask, setDraggedTask] = useState(null);
+  const [draggedFrom, setDraggedFrom] = useState(null);
 
-  const handleDragStart = (task: Task, columnId: string) => {
+  const handleDragStart = (task, columnId) => {
     setDraggedTask(task);
     setDraggedFrom(columnId);
   };
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e) => {
     e.preventDefault();
   };
 
-  const handleDrop = (e: React.DragEvent, targetColumnId: string) => {
+  const handleDrop = (e, targetColumnId) => {
     e.preventDefault();
     
     if (!draggedTask || !draggedFrom || draggedFrom === targetColumnId) {
@@ -122,7 +107,7 @@ export const TaskBoard = () => {
     setDraggedFrom(null);
   };
 
-  const getPriorityColor = (priority: Task["priority"]) => {
+  const getPriorityColor = (priority) => {
     switch (priority) {
       case "high":
         return "bg-destructive/10 text-destructive";
@@ -130,6 +115,8 @@ export const TaskBoard = () => {
         return "bg-warning/10 text-warning";
       case "low":
         return "bg-success/10 text-success";
+      default:
+        return "";
     }
   };
 

@@ -1,11 +1,7 @@
 import { Search, Bell, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-interface HeaderProps {
-  sidebarCollapsed: boolean;
-}
-
-export const Header = ({ sidebarCollapsed }: HeaderProps) => {
+export const Header = ({ sidebarCollapsed }) => {
   return (
     <header
       className={cn(

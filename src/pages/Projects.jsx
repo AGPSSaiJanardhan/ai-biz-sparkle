@@ -17,7 +17,7 @@ const projects = [
   { id: 6, name: "Marketing Campaign", status: "Planning", progress: 25, deadline: "2025-03-30", team: 4, priority: "Medium" },
 ];
 
-const getStatusColor = (status: string) => {
+const getStatusColor = (status) => {
   switch (status) {
     case "Completed": return "default";
     case "In Progress": return "secondary";
@@ -26,7 +26,7 @@ const getStatusColor = (status: string) => {
   }
 };
 
-const getPriorityColor = (priority: string) => {
+const getPriorityColor = (priority) => {
   switch (priority) {
     case "High": return "destructive";
     case "Medium": return "secondary";
